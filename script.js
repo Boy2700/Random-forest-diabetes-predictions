@@ -1,364 +1,505 @@
+// Questions Array
 const questions = [
-  { type: "number", label: "Age", id: "age", min: 18, max: 120 },
-  {
-    type: "select",
-    label: "Gender",
-    id: "gender",
-    options: ["Male", "Female"],
-  },
-  { type: "number", label: "Height (cm)", id: "height", min: 100, max: 250 },
-  { type: "number", label: "Weight (kg)", id: "weight", min: 30, max: 300 },
-  {
-    type: "number",
-    label: "Waist Circumference (cm)",
-    id: "waist",
-    min: 50,
-    max: 200,
-  },
-  {
-    type: "select",
-    label: "Do you have a family history of diabetes?",
-    id: "familyHistory",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Have you ever been diagnosed with prediabetes?",
-    id: "prediabetes",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Do you have high blood pressure?",
-    id: "highBP",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Have you had gestational diabetes?",
-    id: "gestationalDiabetes",
-    options: ["Yes", "No", "Not Applicable"],
-  },
-  {
-    type: "select",
-    label: "Do you have a history of high cholesterol?",
-    id: "highCholesterol",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "How often do you consume sugary drinks or processed foods?",
-    id: "sugarIntake",
-    options: ["Daily", "Few times a week", "Rarely", "Never"],
-  },
-  {
-    type: "select",
-    label: "How frequently do you exercise per week?",
-    id: "exercise",
-    options: ["Never", "1-2 times", "3-4 times", "5 or more times"],
-  },
-  {
-    type: "select",
-    label: "Do you smoke?",
-    id: "smoking",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Do you consume alcohol regularly?",
-    id: "alcohol",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "number",
-    label: "How many hours of sleep do you get per night?",
-    id: "sleep",
-    min: 0,
-    max: 24,
-  },
-  {
-    type: "select",
-    label: "Do you experience frequent urination?",
-    id: "frequentUrination",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Do you feel excessive thirst or hunger?",
-    id: "excessiveThirstHunger",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Have you experienced sudden weight loss?",
-    id: "weightLoss",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Do you feel fatigued often?",
-    id: "fatigue",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Do you have blurry vision?",
-    id: "blurryVision",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Do your wounds heal slowly?",
-    id: "slowHealing",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Have you noticed numbness or tingling in your hands or feet?",
-    id: "numbness",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "select",
-    label: "Do you have dark patches on your skin (Acanthosis Nigricans)?",
-    id: "skinPatches",
-    options: ["Yes", "No"],
-  },
-  {
-    type: "number",
-    label: "What was your last fasting blood sugar level? (mg/dL)",
-    id: "fastingBloodSugar",
-    min: 50,
-    max: 500,
-  },
-  {
-    type: "number",
-    label: "What was your last HbA1c level? (%)",
-    id: "hba1c",
-    min: 3,
-    max: 15,
-    step: 0.1,
-  },
-  {
-    type: "select",
-    label: "Have you been diagnosed with insulin resistance?",
-    id: "insulinResistance",
-    options: ["Yes", "No"],
-  },
+    {
+        question: "Please enter your full name",
+        type: "text",
+        name: "fullName",
+        required: true
+    },
+    {
+        question: "What is your age?",
+        type: "number",
+        name: "age",
+        min: 1,
+        max: 120
+    },
+    {
+        question: "What is your gender?",
+        type: "radio",
+        name: "gender",
+        options: ["Male", "Female", "Other"]
+    },
+    {
+        question: "What is your height (in cm)?",
+        type: "number",
+        name: "height",
+        min: 40,
+        max: 250
+    },
+    {
+        question: "What is your weight (in kg)?",
+        type: "number",
+        name: "weight",
+        min: 3,
+        max: 300
+    },
+    {
+        question: "What is your waist circumference (in cm)?",
+        type: "number",
+        name: "waist",
+        min: 30,
+        max: 200
+    },
+    {
+        question: "Do you have a family history of diabetes?",
+        type: "radio",
+        name: "familyHistory",
+        options: ["Yes", "No", "Not Sure"]
+    },
+    {
+        question: "Have you ever been diagnosed with prediabetes?",
+        type: "radio",
+        name: "prediabetes",
+        options: ["Yes", "No", "Not Sure"]
+    },
+    {
+        question: "Do you have high blood pressure?",
+        type: "radio",
+        name: "highBP",
+        options: ["Yes", "No", "Not Sure"]
+    },
+    {
+        question: "What is your fasting blood sugar level (if known)?",
+        type: "number",
+        name: "bloodSugar",
+        min: 50,
+        max: 500,
+        optional: true
+    },
+    {
+        question: "How many times do you urinate in a day?",
+        type: "number",
+        name: "urinationFrequency",
+        min: 1,
+        max: 30
+    },
+    {
+        question: "Do you experience excessive thirst?",
+        type: "radio",
+        name: "excessiveThirst",
+        options: ["Yes", "No", "Sometimes"]
+    },
+    {
+        question: "Have you noticed unexplained weight loss?",
+        type: "radio",
+        name: "weightLoss",
+        options: ["Yes", "No", "Not Sure"]
+    },
+    {
+        question: "Do you feel unusually tired often?",
+        type: "radio",
+        name: "fatigue",
+        options: ["Yes", "No", "Sometimes"]
+    },
+    {
+        question: "Do you have blurred vision?",
+        type: "radio",
+        name: "blurredVision",
+        options: ["Yes", "No", "Sometimes"]
+    },
+    {
+        question: "Do you have slow-healing sores?",
+        type: "radio",
+        name: "slowHealingSores",
+        options: ["Yes", "No", "Sometimes"]
+    },
+    {
+        question: "How many hours do you sleep per night on average?",
+        type: "number",
+        name: "sleepHours",
+        min: 0,
+        max: 24
+    },
+    {
+        question: "How many times per week do you exercise?",
+        type: "number",
+        name: "exerciseFrequency",
+        min: 0,
+        max: 21
+    },
+    {
+        question: "Do you smoke?",
+        type: "radio",
+        name: "smoking",
+        options: ["Yes", "No", "Former Smoker"]
+    },
+    {
+        question: "How often do you consume alcohol?",
+        type: "radio",
+        name: "alcohol",
+        options: ["Never", "Occasionally", "Regularly", "Daily"]
+    },
+    {
+        question: "How would you rate your stress level?",
+        type: "radio",
+        name: "stressLevel",
+        options: ["Low", "Moderate", "High", "Very High"]
+    },
+    {
+        question: "Do you have numbness or tingling in hands/feet?",
+        type: "radio",
+        name: "numbness",
+        options: ["Yes", "No", "Sometimes"]
+    },
+    {
+        question: "How many meals do you eat per day?",
+        type: "number",
+        name: "mealsPerDay",
+        min: 1,
+        max: 10
+    },
+    {
+        question: "Do you consume sugary drinks daily?",
+        type: "radio",
+        name: "sugaryDrinks",
+        options: ["Yes", "No", "Sometimes"]
+    },
+    {
+        question: "Do you have a sedentary lifestyle?",
+        type: "radio",
+        name: "sedentaryLifestyle",
+        options: ["Yes", "No", "Somewhat"]
+    },
+    {
+        question: "Have you been diagnosed with PCOS? (Females only)",
+        type: "radio",
+        name: "pcos",
+        options: ["Yes", "No", "Not Applicable"]
+    },
+    {
+        question: "Do you have dark patches on your skin (Acanthosis Nigricans)?",
+        type: "radio",
+        name: "darkPatches",
+        options: ["Yes", "No", "Not Sure"]
+    },
+    {
+        question: "What is your ethnicity?",
+        type: "radio",
+        name: "ethnicity",
+        options: ["African", "Asian", "Caucasian", "Hispanic", "Other"]
+    },
+    {
+        question: "For women: Did you have gestational diabetes during pregnancy?",
+        type: "radio",
+        name: "gestationalDiabetes",
+        options: ["Yes", "No", "Not Applicable"]
+    },
+    {
+        question: "What is your blood pressure? (if known)",
+        type: "radio",
+        name: "bloodPressureRange",
+        options: ["Normal", "Pre-hypertension", "High", "Not Sure"]
+    }
 ];
 
 let currentQuestion = 0;
+let assessmentHistory = JSON.parse(localStorage.getItem('assessmentHistory') || '[]');
+let userAnswers = {};
 
 document.addEventListener("DOMContentLoaded", () => {
-  const startBtn = document.getElementById("startBtn");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const restartBtn = document.getElementById("restartBtn");
-  const form = document.getElementById("diabetesForm");
-
-  startBtn.addEventListener("click", startQuestionnaire);
-  prevBtn.addEventListener("click", showPreviousQuestion);
-  nextBtn.addEventListener("click", validateAndProceed);
-  restartBtn.addEventListener("click", restartQuestionnaire);
-
-  renderQuestion();
+    initializeButtons();
+    renderQuestion();
 });
 
+function initializeButtons() {
+    document.getElementById("startBtn").addEventListener("click", startQuestionnaire);
+    document.getElementById("prevBtn").addEventListener("click", showPreviousQuestion);
+    document.getElementById("nextBtn").addEventListener("click", validateAndProceed);
+    document.getElementById("restartBtn").addEventListener("click", restartQuestionnaire);
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+    document.getElementById("saveBtn").addEventListener("click", saveAssessment);
+    document.getElementById("historyBtn").addEventListener("click", toggleHistory);
+    document.getElementById("closeHistory").addEventListener("click", toggleHistory);
+}
+
+function showToast(message, type = 'info') {
+    const toastContainer = document.querySelector('.toast-container');
+    const toast = document.createElement('div');
+    toast.className = `alert alert-${type} alert-dismissible fade show`;
+    toast.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    toastContainer.appendChild(toast);
+    setTimeout(() => toast.remove(), 5000);
+}
+
 function startQuestionnaire() {
-  document.getElementById("welcome").classList.remove("active");
-  document.getElementById("questionnaire").classList.add("active");
-  renderQuestion();
+    document.getElementById("welcome").classList.remove("active");
+    document.getElementById("questionnaire").classList.add("active");
+    currentQuestion = 0;
+    userAnswers = {};
+    renderQuestion();
 }
 
 function renderQuestion() {
-  const form = document.getElementById("diabetesForm");
-  form.innerHTML = "";
+    const question = questions[currentQuestion];
+    let inputHTML = '';
 
-  const question = questions[currentQuestion];
-  const formGroup = document.createElement("div");
-  formGroup.className = "mb-3";
-
-  const label = document.createElement("label");
-  label.className = "form-label fs-5";
-  label.textContent = question.label;
-  label.setAttribute("for", question.id);
-  formGroup.appendChild(label);
-
-  if (question.type === "select") {
-    const select = document.createElement("select");
-    select.className = "form-select form-select-lg";
-    select.id = question.id;
-    select.name = question.id;
-    select.required = true;
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.textContent = "Please select an option";
-    defaultOption.disabled = true;
-    defaultOption.selected = true;
-    select.appendChild(defaultOption);
-    question.options.forEach((option) => {
-      const optionElement = document.createElement("option");
-      optionElement.value = option;
-      optionElement.textContent = option;
-      select.appendChild(optionElement);
-    });
-    formGroup.appendChild(select);
-  } else {
-    const input = document.createElement("input");
-    input.type = question.type;
-    input.className = "form-control form-control-lg";
-    input.id = question.id;
-    input.name = question.id;
-    input.required = true;
-    if (question.min !== undefined) input.min = question.min;
-    if (question.max !== undefined) input.max = question.max;
-    if (question.step !== undefined) input.step = question.step;
-    formGroup.appendChild(input);
-  }
-
-  form.appendChild(formGroup);
-  updateProgressBar();
-  updateNavigationButtons();
-}
-
-function showPreviousQuestion() {
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    renderQuestion();
-  }
-}
-
-function validateAndProceed() {
-  const form = document.getElementById("diabetesForm");
-  const input = form.querySelector("input, select");
-
-  if (input.checkValidity()) {
-    if (currentQuestion < questions.length - 1) {
-      currentQuestion++;
-      renderQuestion();
-    } else {
-      calculateRisk();
+    if (question.type === "radio") {
+        inputHTML = question.options.map(option => `
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="${question.name}" 
+                       id="${question.name}-${option}" value="${option}" 
+                       ${userAnswers[question.name] === option ? 'checked' : ''} required>
+                <label class="form-check-label" for="${question.name}-${option}">
+                    ${option}
+                </label>
+            </div>
+        `).join('');
+    } else if (question.type === "number") {
+        inputHTML = `
+            <input type="number" class="form-control" id="${question.name}" 
+                   name="${question.name}" min="${question.min}" max="${question.max}" 
+                   value="${userAnswers[question.name] || ''}"
+                   ${question.optional ? '' : 'required'}>
+            <div class="form-text">Value must be between ${question.min} and ${question.max}</div>
+        `;
+    } else if (question.type === "text") {
+        inputHTML = `
+            <input type="text" class="form-control" id="${question.name}" 
+                   name="${question.name}" value="${userAnswers[question.name] || ''}" required>
+        `;
     }
-  } else {
-    form.classList.add("shake");
-    setTimeout(() => form.classList.remove("shake"), 820);
-  }
+
+    document.getElementById("question-container").innerHTML = `
+        <form id="questionForm" class="mb-3">
+            <h4 class="mb-3">${question.question}</h4>
+            ${inputHTML}
+        </form>
+    `;
+
+    updateProgress();
+    updateNavigationButtons();
 }
 
-function updateProgressBar() {
-  const progress = document.getElementById("progress");
-  const percentage = ((currentQuestion + 1) / questions.length) * 100;
-  progress.style.width = `${percentage}%`;
-  progress.setAttribute("aria-valuenow", percentage);
+function updateProgress() {
+    const progress = document.getElementById("progress");
+    const percentage = ((currentQuestion + 1) / questions.length) * 100;
+    progress.style.width = `${percentage}%`;
 }
 
 function updateNavigationButtons() {
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    
+    prevBtn.style.visibility = currentQuestion === 0 ? "hidden" : "visible";
+    nextBtn.innerHTML = currentQuestion === questions.length - 1 ? 
+        'Submit <i class="bi bi-check-lg"></i>' : 
+        'Next <i class="bi bi-arrow-right"></i>';
+}
 
-  prevBtn.style.visibility = currentQuestion === 0 ? "hidden" : "visible";
-  nextBtn.textContent =
-    currentQuestion === questions.length - 1 ? "Submit" : "Next";
+function validateAndProceed() {
+    const form = document.getElementById("questionForm");
+    const input = form.querySelector("input");
+
+    if (!form.checkValidity()) {
+        showToast("Please answer the question before proceeding", "warning");
+        form.classList.add("shake");
+        setTimeout(() => form.classList.remove("shake"), 820);
+        return;
+    }
+
+    // Save the current answer
+    if (questions[currentQuestion].type === "radio") {
+        const selectedInput = form.querySelector('input:checked');
+        if (selectedInput) {
+            userAnswers[questions[currentQuestion].name] = selectedInput.value;
+        }
+    } else {
+        userAnswers[questions[currentQuestion].name] = input.value;
+    }
+
+    if (input.type === "number" && !questions[currentQuestion].optional) {
+        const value = parseFloat(input.value);
+        const min = parseFloat(input.min);
+        const max = parseFloat(input.max);
+        
+        if (value < min || value > max) {
+            showToast(`Value must be between ${min} and ${max}`, "danger");
+            return;
+        }
+    }
+
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+    } else {
+        calculateRisk();
+    }
+}
+
+function showPreviousQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+    }
 }
 
 function calculateRisk() {
-  let riskScore = 0;
-  const form = document.getElementById("diabetesForm");
-  const formData = new FormData(form);
+    let riskScore = 0;
+    const userName = userAnswers.fullName;
 
-  // Assign risk points based on answers
-  if (parseInt(formData.get("age")) > 45) riskScore += 2;
-  if (formData.get("familyHistory") === "Yes") riskScore += 2;
-  if (formData.get("prediabetes") === "Yes") riskScore += 3;
-  if (formData.get("highBP") === "Yes") riskScore += 2;
-  if (formData.get("highCholesterol") === "Yes") riskScore += 2;
-  if (formData.get("sugarIntake") === "Daily") riskScore += 2;
-  if (formData.get("exercise") === "Never") riskScore += 2;
-  if (formData.get("smoking") === "Yes") riskScore += 1;
-  if (formData.get("alcohol") === "Yes") riskScore += 1;
-  if (formData.get("frequentUrination") === "Yes") riskScore += 2;
-  if (formData.get("excessiveThirstHunger") === "Yes") riskScore += 2;
-  if (formData.get("weightLoss") === "Yes") riskScore += 2;
-  if (formData.get("fatigue") === "Yes") riskScore += 1;
-  if (formData.get("blurryVision") === "Yes") riskScore += 1;
-  if (formData.get("slowHealing") === "Yes") riskScore += 1;
-  if (formData.get("numbness") === "Yes") riskScore += 1;
-  if (formData.get("skinPatches") === "Yes") riskScore += 1;
+    // Calculate BMI
+    const height = parseFloat(userAnswers.height) / 100;
+    const weight = parseFloat(userAnswers.weight);
+    const bmi = weight / (height * height);
 
-  const fastingBloodSugar = parseFloat(formData.get("fastingBloodSugar"));
-  const hba1c = parseFloat(formData.get("hba1c"));
+    // Risk factors scoring
+    if (parseInt(userAnswers.age) > 45) riskScore += 2;
+    if (bmi >= 25) riskScore += 1;
+    if (bmi >= 30) riskScore += 2;
+    if (userAnswers.familyHistory === "Yes") riskScore += 2;
+    if (userAnswers.prediabetes === "Yes") riskScore += 3;
+    if (userAnswers.highBP === "Yes") riskScore += 2;
+    if (userAnswers.excessiveThirst === "Yes") riskScore += 1;
+    if (userAnswers.weightLoss === "Yes") riskScore += 1;
+    if (userAnswers.fatigue === "Yes") riskScore += 1;
+    if (userAnswers.blurredVision === "Yes") riskScore += 1;
+    if (userAnswers.slowHealingSores === "Yes") riskScore += 1;
+    if (parseInt(userAnswers.sleepHours) < 6 || parseInt(userAnswers.sleepHours) > 9) riskScore += 1;
+    if (parseInt(userAnswers.exerciseFrequency) < 3) riskScore += 1;
+    if (userAnswers.smoking === "Yes") riskScore += 1;
+    if (userAnswers.alcohol === "Daily") riskScore += 1;
+    if (userAnswers.stressLevel === "High" || userAnswers.stressLevel === "Very High") riskScore += 1;
+    if (userAnswers.numbness === "Yes") riskScore += 1;
+    if (userAnswers.sugaryDrinks === "Yes") riskScore += 1;
+    if (userAnswers.sedentaryLifestyle === "Yes") riskScore += 2;
+    if (userAnswers.darkPatches === "Yes") riskScore += 1;
+    if (userAnswers.ethnicity === "African" || userAnswers.ethnicity === "Asian") riskScore += 1;
+    if (userAnswers.gestationalDiabetes === "Yes") riskScore += 2;
+    if (userAnswers.bloodPressureRange === "High") riskScore += 1;
 
-  if (fastingBloodSugar > 100) riskScore += 3;
-  if (hba1c > 5.7) riskScore += 3;
-
-  // Calculate BMI
-  const height = parseFloat(formData.get("height")) / 100; // convert cm to m
-  const weight = parseFloat(formData.get("weight"));
-  const bmi = weight / (height * height);
-  if (bmi > 25) riskScore += 1;
-  if (bmi > 30) riskScore += 2;
-
-  displayResults(riskScore);
+    displayResults(riskScore, { bmi, userName, answers: userAnswers });
 }
 
-function displayResults(riskScore) {
-  document.getElementById("questionnaire").classList.remove("active");
-  document.getElementById("results").classList.add("active");
+function displayResults(riskScore, metrics) {
+    document.getElementById("questionnaire").classList.remove("active");
+    document.getElementById("results").classList.add("active");
 
-  const riskLevel = document.getElementById("risk-level");
-  const riskDetails = document.getElementById("risk-details");
-  const recommendationText = document.getElementById("recommendation-text");
+    const riskLevel = document.getElementById("risk-level");
+    const riskDetails = document.getElementById("risk-details");
+    const recommendationText = document.getElementById("recommendation-text");
 
-  let riskCategory, riskText, recommendationContent, diabetesType;
+    let riskCategory, riskText, recommendations;
 
-  if (riskScore < 10) {
-    riskCategory = "alert-success";
-    riskText = "Low Risk";
-    diabetesType = "You are currently at low risk for diabetes";
-    recommendationContent =
-      "Maintain your healthy lifestyle with regular exercise and a balanced diet. Continue to monitor your health and have regular check-ups.";
-  } else if (riskScore < 20) {
-    riskCategory = "alert-warning";
-    riskText = "Moderate Risk";
-    diabetesType = "You may be at risk for Type 2 Diabetes";
-    recommendationContent =
-      "Consider lifestyle changes such as improving your diet, increasing physical activity, and managing stress. Consult with a healthcare professional for a thorough evaluation and potential prediabetes screening.";
-  } else {
-    riskCategory = "alert-danger";
-    riskText = "High Risk";
-    diabetesType = "You may be at high risk for Type 2 Diabetes";
-    recommendationContent =
-      "Urgent action is recommended. Schedule an appointment with a healthcare professional immediately for a comprehensive diabetes screening and potential treatment plan. Early intervention can significantly improve outcomes.";
-  }
+    if (riskScore < 8) {
+        riskCategory = "success";
+        riskText = "Low Risk";
+        recommendations = "Maintain your healthy lifestyle with regular exercise and a balanced diet.";
+    } else if (riskScore < 15) {
+        riskCategory = "warning";
+        riskText = "Moderate Risk";
+        recommendations = "Consider lifestyle changes and consult with a healthcare professional.";
+    } else {
+        riskCategory = "danger";
+        riskText = "High Risk";
+        recommendations = "Please consult with a healthcare professional as soon as possible.";
+    }
 
-  riskLevel.textContent = riskText;
-  riskLevel.className = `alert ${riskCategory}`;
+    let bmiCategory;
+    if (metrics.bmi < 18.5) bmiCategory = "Underweight";
+    else if (metrics.bmi < 25) bmiCategory = "Normal weight";
+    else if (metrics.bmi < 30) bmiCategory = "Overweight";
+    else bmiCategory = "Obese";
 
-  riskDetails.innerHTML = `
-        <p class="fs-4">${diabetesType}</p>
-        <p>Based on your responses, you have a ${riskText.toLowerCase()} of developing diabetes.</p>
-        <p>Your risk score: ${riskScore} out of 30</p>
+    riskLevel.className = `alert alert-${riskCategory}`;
+    riskLevel.innerHTML = `
+        <h4 class="alert-heading">Prediction Result for ${metrics.userName}</h4>
+        <p class="mb-0">Risk Level: ${riskText}</p>
     `;
 
-  recommendationText.innerHTML = `
-        <p class="mb-3">${recommendationContent}</p>
-        <p class="fw-bold">Additional Recommendations:</p>
-        <ul>
-            <li>Monitor your blood sugar levels regularly</li>
-            <li>Maintain a healthy weight through diet and exercise</li>
-            <li>Stay hydrated and limit alcohol consumption</li>
-            <li>Get adequate sleep and manage stress levels</li>
-            <li>Consider joining a diabetes prevention program</li>
+    riskDetails.innerHTML = `
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Patient Information</h5>
+                <p class="card-text">Name: ${metrics.userName}</p>
+                <p class="card-text">Risk Score: ${riskScore} out of 30</p>
+                <p class="card-text">Prediction Date: ${new Date().toLocaleString()}</p>
+            </div>
+        </div>
+        <div class="mt-4">
+            <h4>Health Metrics:</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">BMI: ${metrics.bmi.toFixed(1)} (${bmiCategory})</li>
+                <li class="list-group-item">Age: ${metrics.answers.age} years</li>
+                <li class="list-group-item">Gender: ${metrics.answers.gender}</li>
+                <li class="list-group-item">Waist Circumference: ${metrics.answers.waist} cm</li>
+            </ul>
+        </div>
+    `;
+
+    recommendationText.innerHTML = `
+        <p class="mb-3">Dear ${metrics.userName}, ${recommendations}</p>
+        <h4>Additional Recommendations:</h4>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Monitor your blood sugar levels regularly</li>
+            <li class="list-group-item">Maintain a healthy weight through diet and exercise</li>
+            <li class="list-group-item">Stay hydrated and limit alcohol consumption</li>
+            <li class="list-group-item">Get adequate sleep and manage stress levels</li>
+            <li class="list-group-item">Consider joining a diabetes prevention program</li>
         </ul>
-        <p class="mt-3 fst-italic">Remember, this assessment is not a diagnosis. Always consult with a healthcare professional for accurate medical advice and a personalized treatment plan.</p>
     `;
+}
+
+function saveAssessment() {
+    const currentAssessment = {
+        name: userAnswers.fullName,
+        date: new Date().toLocaleString(),
+        riskLevel: document.getElementById("risk-level").textContent,
+        details: document.getElementById("risk-details").innerHTML,
+        recommendations: document.getElementById("recommendation-text").innerHTML,
+        answers: userAnswers
+    };
+
+    assessmentHistory.push(currentAssessment);
+    localStorage.setItem('assessmentHistory', JSON.stringify(assessmentHistory));
+    showToast('Prediction saved successfully!', 'success');
+    loadHistory();
+}
+
+function loadHistory() {
+    const historyList = document.getElementById('historyList');
+    historyList.innerHTML = assessmentHistory.length ? 
+        assessmentHistory.map((assessment, index) => `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">${assessment.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${assessment.date}</h6>
+                    <p class="card-text">${assessment.riskLevel}</p>
+                    <button class="btn btn-sm btn-primary" 
+                            onclick="viewHistoricalAssessment(${index})">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        `).join('') : 
+        '<p>No Prediction history available.</p>';
+}
+
+function viewHistoricalAssessment(index) {
+    const assessment = assessmentHistory[index];
+    document.getElementById("results").classList.add("active");
+    document.getElementById("questionnaire").classList.remove("active");
+    document.getElementById("welcome").classList.remove("active");
+    
+    document.getElementById("risk-level").innerHTML = `
+        <h4 class="alert-heading">Historical Prediction for ${assessment.name}</h4>
+        <p class="mb-0">${assessment.riskLevel}</p>
+    `;
+    document.getElementById("risk-details").innerHTML = assessment.details;
+    document.getElementById("recommendation-text").innerHTML = assessment.recommendations;
+    
+    toggleHistory();
+}
+
+function toggleHistory() {
+    document.getElementById("historyPanel").classList.toggle("active");
 }
 
 function restartQuestionnaire() {
-  currentQuestion = 0;
-  document.getElementById("results").classList.remove("active");
-  document.getElementById("welcome").classList.add("active");
+    currentQuestion = 0;
+    userAnswers = {};
+    document.getElementById("results").classList.remove("active");
+    document.getElementById("welcome").classList.add("active");
 }
-
-// Initialize the questionnaire
-renderQuestion();
