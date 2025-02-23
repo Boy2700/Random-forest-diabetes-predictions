@@ -8,7 +8,7 @@ body {
     background: linear-gradient(to bottom, rgba(226, 74, 211, 0.1), white);
     font-family: Arial, sans-serif;
     padding-bottom: 200px;
-    min-height: 130vh;
+    min-height: 135vh;
 }
 
 .container {
